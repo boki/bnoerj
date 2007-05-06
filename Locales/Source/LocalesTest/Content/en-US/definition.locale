@@ -1,0 +1,6 @@
+<Locale Name="en-US">
+	<!-- Optional, not implemented -->
+	<Klc Name="en-US.klc" />
+	<!-- Optional -->
+	<Font Name="Tahoma" />
+</Locale>
