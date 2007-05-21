@@ -37,6 +37,7 @@
     <NoStdLib>true</NoStdLib>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <PlatformTarget>x86</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Xna.Framework">
@@ -130,6 +131,10 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>AssemblyInfo</Name>
+    </Compile>
+    <Compile Include="Properties\VersionInfo.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>VersionInfo</Name>
     </Compile>
     <Compile Include="KeyboardLayouts\ShiftState.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>

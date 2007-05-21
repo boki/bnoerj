@@ -11,13 +11,21 @@ using System.Text;
 
 namespace Bnoerj.Locales.KeyboardLayouts
 {
+	/// <summary>
+	/// Defines a keyboard layouts virtual key value.
+	/// </summary>
 	public struct VirtualKeyValue
 	{
-		public static readonly VirtualKeyValue Empty = new VirtualKeyValue("", true);
+		/// <summary>
+		/// Represents a VirtualKeyValue that is a null reference.
+		/// </summary>
+		public static readonly VirtualKeyValue Empty = new VirtualKeyValue(uint.MaxValue, "", true);
 
 		//NOTE: Creative alternative...
 		internal readonly uint ScanCode;
+		/// <summary>The characters for the scan code.</summary>
 		public readonly String Characters;
+		/// <summary>Indicator if this virtual key is a dead key or not.</summary>
 		public readonly bool IsDeadKey;
 
 		//FIXME: should be internal, but the Importer needs to construct this type
@@ -27,11 +35,15 @@ namespace Bnoerj.Locales.KeyboardLayouts
 			Characters = characters;
 			IsDeadKey = isDeadKey;
 		}
-		internal VirtualKeyValue(uint scanCode, VirtualKeyValue value)
+		public VirtualKeyValue(uint scanCode, String characters, bool isDeadKey)
 		{
 			ScanCode = scanCode;
-			Characters = value.Characters;
-			IsDeadKey = value.IsDeadKey;
+			Characters = characters;
+			IsDeadKey = isDeadKey;
+		}
+		internal VirtualKeyValue(uint scanCode, VirtualKeyValue value)
+			: this(scanCode, value.Characters, value.IsDeadKey)
+		{
 		}
 
 		public static bool operator == (VirtualKeyValue value1, VirtualKeyValue value2)
@@ -51,8 +63,7 @@ namespace Bnoerj.Locales.KeyboardLayouts
 
 		public override int GetHashCode()
 		{
-			//FIXME: what about overflows?
-			return Characters.GetHashCode() | GetHashCode();
+			return Characters.GetHashCode() ^ ScanCode.GetHashCode();
 		}
 	}
 }

@@ -137,6 +137,10 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>AssemblyInfo</Name>
     </Compile>
+    <Compile Include="Properties\VersionInfo.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>VersionInfo</Name>
+    </Compile>
     <Compile Include="Utilities.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>Utilities</Name>

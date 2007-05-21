@@ -55,11 +55,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FixedFont.cs">
-      <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>FixedFont</Name>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\VersionInfo.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>VersionInfo</Name>
+    </Compile>
     <Compile Include="Program.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>Program</Name>
@@ -84,14 +84,6 @@
       <Project>{5436A470-5834-4B75-A5A1-60A1D546B4D4}</Project>
       <Name>Locales</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Content\Fonts\Courier.png">
-      <XNAUseContentPipeline>true</XNAUseContentPipeline>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Name>Courier</Name>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\de-DE\definition.locale">

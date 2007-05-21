@@ -27,7 +27,6 @@ namespace LocaleTest
 	{
 		GraphicsDeviceManager graphics;
 		ContentManager content;
-		FixedFont courierFont;
 		GlyphBatch glyphBatch;
 
 		String[] localeNames;
@@ -75,7 +74,6 @@ namespace LocaleTest
 		{
 			if (loadAllContent)
 			{
-				courierFont = new FixedFont(content.Load<Texture2D>("Content/Fonts/Courier"));
 				glyphBatch = new GlyphBatch(graphics.GraphicsDevice);
 			}
 
