@@ -34,6 +34,7 @@ namespace Bnoerj.Locales.KeyboardLayouts
 		KeysEx specialShiftVk;
 		VirtualKey[] keys;
 		Dictionary<char, DeadKey> deadKeys;
+		XnaKeys[] filteredPressedKeys;
 
 		internal KeyboardLayout(String layoutId, KeysEx specialShiftVk, VirtualKey[] keys, Dictionary<char, DeadKey> deadKeys)
 		{
@@ -43,37 +44,92 @@ namespace Bnoerj.Locales.KeyboardLayouts
 			this.deadKeys = deadKeys;
 		}
 
+		/// <summary>
+		/// Gets the keyboard layout ID.
+		/// </summary>
 		public String LayoutId
 		{
 			get { return layoutId; }
 		}
 
+		/// <summary>
+		/// Gets the special shift key.
+		/// </summary>
+		/// <remarks>
+		///  If the keyboard layout does not define a special shift key, the
+		/// value is Keys.None.
+		/// </remarks>
 		public KeysEx SpecialShiftVk
 		{
 			get { return specialShiftVk; }
 		}
 
+		/// <summary>
+		/// Gets the shift state.
+		/// </summary>
 		public ShiftState MaxShiftState
 		{
 			get { return (specialShiftVk == KeysEx.None ? ShiftState.ShftMenuCtrl : ShiftState.ShftSpcl); }
 		}
 
+		/// <summary>
+		/// Gets an array of values that correspond to the keyboard layout.
+		/// </summary>
 		public VirtualKey[] Keys
 		{
 			get { return keys; }
 		}
 
+		/// <summary>
+		/// Gets a dictonary that correspond to the dead keys defined by the
+		/// keyboard layout.
+		/// </summary>
 		public Dictionary<char, DeadKey> DeadKeys
 		{
 			get { return deadKeys; }
 		}
 
-		//TODO: Translate scan code/Microsoft.Xna.Framework.Input.Keys to KeysEx
+		/// <summary>
+		/// Gets an array of shift-key filtered values that correspond to the
+		/// keyboard keys that are currently being pressed.
+		/// </summary>
+		public XnaKeys[] FilteredPressedKeys
+		{
+			get { return filteredPressedKeys; }
+		}
+
+		/// <summary>
+		/// Returns a value that indicates whether the key is a shift key for
+		/// this keyboard layout.
+		/// </summary>
+		/// <param name="key">The key to test.</param>
+		/// <returns>true if key is a shift key, false otherwise.</returns>
+		public bool IsShiftKey(XnaKeys key)
+		{
+			return key == XnaKeys.LeftAlt || key == XnaKeys.RightShift ||
+				key == XnaKeys.LeftControl || key == XnaKeys.RightControl ||
+				key == XnaKeys.LeftShift || key == XnaKeys.RightAlt ||
+				key == (XnaKeys)specialShiftVk;
+		}
+
+		/// <summary>
+		/// Returns an array of values that correspond to the pressed keys,
+		/// processed by this keyboard layout.
+		/// </summary>
+		/// <param name="state">The keyboard state to process.</param>
+		/// <returns>The virtual key values.</returns>
 		public VirtualKeyValue[] ProcessKeys(KeyboardState state)
 		{
 			return ProcessKeys(state, ProcessKeysFlags.Default);
 		}
 
+		/// <summary>
+		/// Returns an array of values that correspond to the pressed keys,
+		/// processed by this keyboard layout using the specified flags.
+		/// </summary>
+		/// <param name="state">The keyboard state to process.</param>
+		/// <param name="flags">Flags.</param>
+		/// <returns>The virtual key values.</returns>
 		public VirtualKeyValue[] ProcessKeys(KeyboardState state, ProcessKeysFlags flags)
 		{
 			ShiftState shiftState =
@@ -102,14 +158,17 @@ namespace Bnoerj.Locales.KeyboardLayouts
 			XnaKeys[] pressedKeys = state.GetPressedKeys();
 #endif
 			List<VirtualKeyValue> res = new List<VirtualKeyValue>(pressedKeys.Length);
+			List<XnaKeys> pressed = new List<Keys>();
 			foreach (XnaKeys key in pressedKeys)
 			{
 				VirtualKey vk = keys[(int)key];
 				if (vk != null)
 				{
 					res.Add(vk.GetShiftState(shiftState, caps));
+					pressed.Add(key);
 				}
 			}
+			filteredPressedKeys = pressed.ToArray();
 			return res.ToArray();
 		}
 	}

@@ -115,7 +115,8 @@ namespace Bnoerj.Locales.Text
 			// if a repeated one
 			KeyboardState state = Keyboard.GetState();
 			VirtualKeyValue[] keystroke = keyboardLayout.ProcessKeys(state);
-			Keys[] thisStroke = state.GetPressedKeys();
+			//Keys[] thisStroke = state.GetPressedKeys();
+			Keys[] thisStroke = keyboardLayout.FilteredPressedKeys;
 			bool isNewStroke = true;
 			if (previousStroke != null && previousStroke.Length == thisStroke.Length)
 			{
