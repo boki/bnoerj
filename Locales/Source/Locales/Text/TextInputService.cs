@@ -214,7 +214,7 @@ namespace Bnoerj.Locales.Text
 				{
 					keyboardLayout.DeadKeys.TryGetValue(keystroke[0].Characters[0], out deadKey);
 				}
-				else if (Char.IsControl(keystroke[0].Characters, 0) == false)
+				else if (keystroke[0].Characters != null && Char.IsControl(keystroke[0].Characters, 0) == false)
 				{
 					// Only add non-control characters
 					characters = keystroke[0].Characters;
