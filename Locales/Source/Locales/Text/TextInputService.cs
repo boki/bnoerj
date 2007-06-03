@@ -28,6 +28,7 @@ namespace Bnoerj.Locales.Text
 
 		KeyStateFlags[] keyStates;
 		Keys[] previousStroke;
+		VirtualKeyValue currentKeyValue;
 		double strokeStartTime;
 		DeadKey deadKey;
 		int repeatTimeCount;
@@ -112,27 +113,52 @@ namespace Bnoerj.Locales.Text
 			base.Update(gameTime);
 
 			// Get current keystroke and check if this is a new keystroke or
-			// if a repeated one
+			// if it is a repeated one.
 			KeyboardState state = Keyboard.GetState();
 			VirtualKeyValue[] keystroke = keyboardLayout.ProcessKeys(state);
-			//Keys[] thisStroke = state.GetPressedKeys();
-			Keys[] thisStroke = keyboardLayout.FilteredPressedKeys;
+			Keys[] filteredStroke = keyboardLayout.FilteredPressedKeys;
 			bool isNewStroke = true;
-			if (previousStroke != null && previousStroke.Length == thisStroke.Length)
+			if (previousStroke != null)
 			{
+				// Check scan codes to handle modifier+char to char transitions.
+				// If two or more keys are pressed, the last one is used and when
+				// this key is released, no keystroke is generated.
+
+				int newKeyIndex = -1;
 				int i;
-				for (i = 0; i < thisStroke.Length; i++)
+				int j = 0;
+				for (i = 0; i < filteredStroke.Length; i++)
 				{
-					// Check scan codes to handle modifier+char to char transitions
-					if (previousStroke[i] != thisStroke[i])
+					// KeyboardLayout.FilteredPressedKeys is sorted
+					while (j < previousStroke.Length && previousStroke[j] < filteredStroke[i])
 					{
+						j++;
+					}
+
+					if (j >= previousStroke.Length)
+					{
+						newKeyIndex = i;
 						break;
+					}
+					else if (previousStroke[j] > filteredStroke[i])
+					{
+						newKeyIndex = i;
 					}
 				}
 
-				// It is a new stroke when one (or more) SC are different
-				// between frames
-				isNewStroke = i < thisStroke.Length;
+				if (newKeyIndex > -1)
+				{
+					isNewStroke = currentKeyValue != keystroke[newKeyIndex];
+					currentKeyValue = keystroke[newKeyIndex];
+				}
+				else
+				{
+					isNewStroke = false;
+					if (keystroke.Length == 0)
+					{
+						currentKeyValue = VirtualKeyValue.Empty;
+					}
+				}
 			}
 
 			for (int i = 0; i < keyStates.Length; i++)
@@ -141,7 +167,7 @@ namespace Bnoerj.Locales.Text
 			}
 
 			// If the keystroke is a new stroke, reset start time and update
-			// key state flags to notify taht the key was just released
+			// key state flags to notify that the key was just released
 			if (isNewStroke == true)
 			{
 				strokeStartTime = gameTime.TotalGameTime.TotalMilliseconds;
@@ -197,9 +223,10 @@ namespace Bnoerj.Locales.Text
 			characters = "";
 			if (doSetString == true && keystroke.Length > 0)
 			{
+				VirtualKeyValue keyValue = currentKeyValue;
 				if (deadKey != null)
 				{
-					char baseChar = keystroke[0].Characters[0];
+					char baseChar = keyValue.Characters[0];
 					if (deadKey.ContainsBaseCharacter(baseChar) == true)
 					{
 						characters = deadKey.GetCombinedCharacter(baseChar).ToString();
@@ -210,28 +237,27 @@ namespace Bnoerj.Locales.Text
 					}
 					deadKey = null;
 				}
-				else if (keystroke[0].IsDeadKey == true)
+				else if (keyValue.IsDeadKey == true)
 				{
-					keyboardLayout.DeadKeys.TryGetValue(keystroke[0].Characters[0], out deadKey);
+					keyboardLayout.DeadKeys.TryGetValue(keyValue.Characters[0], out deadKey);
 				}
-				else if (keystroke[0].Characters != null && Char.IsControl(keystroke[0].Characters, 0) == false)
+				else if (keyValue.Characters != null && Char.IsControl(keyValue.Characters, 0) == false)
 				{
-					// Only add non-control characters
-					characters = keystroke[0].Characters;
+					// Add non-control characters only
+					characters = keyValue.Characters;
 				}
 			}
 
-			if (doSetString == true && thisStroke.Length > 0)
+			if (doSetString == true && filteredStroke.Length > 0)
 			{
 				// Update key state flags
-				foreach (Keys key in thisStroke)
+				foreach (Keys key in filteredStroke)
 				{
 					keyStates[(int)key] = newKeyStateFlags;
 				}
 			}
-			//Console.WriteLine("Chars: {0}", characters);
 
-			previousStroke = thisStroke;
+			previousStroke = filteredStroke;
 		}
 
 		/// <summary>
