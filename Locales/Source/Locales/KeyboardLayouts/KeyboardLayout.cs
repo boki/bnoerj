@@ -35,6 +35,8 @@ namespace Bnoerj.Locales.KeyboardLayouts
 		VirtualKey[] keys;
 		Dictionary<char, DeadKey> deadKeys;
 		XnaKeys[] filteredPressedKeys;
+		bool capsPressed;
+		bool capsLocked;
 
 		internal KeyboardLayout(String layoutId, KeysEx specialShiftVk, VirtualKey[] keys, Dictionary<char, DeadKey> deadKeys)
 		{
@@ -139,7 +141,14 @@ namespace Bnoerj.Locales.KeyboardLayouts
 				(state.IsKeyDown(XnaKeys.LeftAlt) || state.IsKeyDown(XnaKeys.RightAlt) ? ShiftState.Menu : 0) |
 				//FIXME: ensure that XnaKeys == KeysEx
 				(specialShiftVk != KeysEx.None ? state.IsKeyDown((XnaKeys)specialShiftVk) ? ShiftState.Spcl : 0 : 0);
-			bool caps = (flags & ProcessKeysFlags.IgnoreCapsLock) != 0 ? false : state.IsKeyDown(XnaKeys.CapsLock);
+
+			// Toggle caps lock state on first caps lock press
+			if (capsPressed == false && state.IsKeyDown(XnaKeys.CapsLock) == true)
+			{
+				capsLocked = !capsLocked;
+			}
+			capsPressed = state.IsKeyDown(XnaKeys.CapsLock);
+			bool applyCapsLock = (flags & ProcessKeysFlags.IgnoreCapsLock) != 0 ? false : capsLocked;
 #if IGNORED
 			XnaKeys[] keys = state.GetPressedKeys();
 			KeysEx[] pressedKeys = new KeysEx[keys.Length];
@@ -164,7 +173,7 @@ namespace Bnoerj.Locales.KeyboardLayouts
 				VirtualKey vk = keys[(int)key];
 				if (vk != null)
 				{
-					res.Add(vk.GetShiftState(shiftState, caps));
+					res.Add(vk.GetShiftState(shiftState, applyCapsLock));
 					pressed.Add(key);
 				}
 			}
