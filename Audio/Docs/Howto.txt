@@ -1,0 +1,21 @@
+How to use Bnoerj.Audio:
+
+First off all, you need the March 2008 release of the DirectX SDK to get the
+XACT3 tools.
+
+To use Bnoerj.Audio in your Windows XNA Game Studio game the only code changes
+are:
+
+1. Reference the Bnoerj.Audio.dll assembly
+2. Replace all using Microsoft.XNA.Framework.Audio with using Bnoerj.Audio
+
+The xap file(s) in your project need to be edited in XACT3.exe to add WMA
+compression for the Windows target. Once the compression preset(s) have been
+updated you might want to save the xap file using a different name (e.g.
+MyProject.xap3) to not break the build of your Xbox 360 project. To generate
+the runtime xgs, xsb and xwb files you can either use the XACT3 GUI or the
+command line tool xact3bld.exe, e.g. "XactBld3.exe /L X:HEADER /WINDOWS
+MyProject.xap3 ." (without the quotes) to build the binaries into the current
+directory (ignoring the output directories defined in the xap file itself).
+The binaries can than be used inside the games content project instead of the
+xap file.

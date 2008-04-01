@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="UnexpectedError" xml:space="preserve">
+    <value>An unexpected error has occurred.</value>
+  </data>
+  <data name="NullNotAllowed" xml:space="preserve">
+    <value>This method does not accept null for this parameter.</value>
+  </data>
+  <data name="CouldNotCreateResource" xml:space="preserve">
+    <value>This resource could not be created.</value>
+  </data>
+  <data name="InvalidEmitterDopplerScale" xml:space="preserve">
+    <value>The doppler scale of an audio emitter must be greater than or equal to zero.</value>
+  </data>
+  <data name="Apply3DBeforePlaying" xml:space="preserve">
+    <value>You must call Apply3D on a Cue before calling Play to be able to call Apply3D after calling Play.</value>
+  </data>
+  <data name="AlreadyInitialized" xml:space="preserve">
+    <value>The engine is already initialized.</value>
+  </data>
+  <data name="NotInitialized" xml:space="preserve">
+    <value>The engine has not been initialized.</value>
+  </data>
+  <data name="EngineExpired" xml:space="preserve">
+    <value>The engine has expired (demo or pre-release version).</value>
+  </data>
+  <data name="NoNotificationCallback" xml:space="preserve">
+    <value>No notification callback.</value>
+  </data>
+  <data name="NotificationRegistered" xml:space="preserve">
+    <value>Notification already registered.</value>
+  </data>
+  <data name="InvalidData" xml:space="preserve">
+    <value>Invalid data.</value>
+  </data>
+  <data name="InstanceLimitFailToPlay" xml:space="preserve">
+    <value>Fail to play due to instance limit.</value>
+  </data>
+  <data name="NoGlobalSettings" xml:space="preserve">
+    <value>Global Settings not loaded.</value>
+  </data>
+  <data name="InvalidVariableIndex" xml:space="preserve">
+    <value>Invalid variable index.</value>
+  </data>
+  <data name="InvalidCategory" xml:space="preserve">
+    <value>Invalid category.</value>
+  </data>
+  <data name="InvalidCue" xml:space="preserve">
+    <value>Invalid cue index.</value>
+  </data>
+  <data name="InvalidWaveIndex" xml:space="preserve">
+    <value>Invalid wave index.</value>
+  </data>
+  <data name="InvalidTrackIndex" xml:space="preserve">
+    <value>Invalid track index.</value>
+  </data>
+  <data name="InvalidSoundoffsetOrIndex" xml:space="preserve">
+    <value>Invalid sound offset or index.</value>
+  </data>
+  <data name="UnknownEvent" xml:space="preserve">
+    <value>Unknown event type.</value>
+  </data>
+  <data name="InCallback" xml:space="preserve">
+    <value>Invalid call of method of function from callback.</value>
+  </data>
+  <data name="NoWaveBank" xml:space="preserve">
+    <value>No wavebank exists for desired operation.</value>
+  </data>
+  <data name="SelectVariation" xml:space="preserve">
+    <value>Unable to select a variation.</value>
+  </data>
+  <data name="MultipleAuditionEngines" xml:space="preserve">
+    <value>There can be only one audition engine.</value>
+  </data>
+  <data name="WaveBankNotPrepared" xml:space="preserve">
+    <value>The wavebank is not prepared.</value>
+  </data>
+  <data name="InvalidEntryCount" xml:space="preserve">
+    <value>Invalid entry count for channel maps.</value>
+  </data>
+  <data name="SeekTimeBeyondEnd" xml:space="preserve">
+    <value>Time offset for seeking is beyond the wave end.</value>
+  </data>
+  <data name="NoFriendlyNames" xml:space="preserve">
+    <value>Friendly names are not included in the bank.</value>
+  </data>
+</root>
