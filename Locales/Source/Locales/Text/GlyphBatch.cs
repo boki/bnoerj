@@ -78,9 +78,9 @@ namespace Bnoerj.Locales.Text
 		GlyphVertex[] glyphQueue;
 		int glyphQueueCount;
 
-		VertexBuffer vertexBuffer;
+		DynamicVertexBuffer vertexBuffer;
 		VertexDeclaration vertexDeclaration;
-		IndexBuffer indexBuffer;
+		DynamicIndexBuffer indexBuffer;
 		VertexShader vertexShader;
 		PixelShader pixelShader;
 		int vertexBufferPosition;
@@ -301,13 +301,13 @@ namespace Bnoerj.Locales.Text
 		{
 			if (vertexBuffer == null || vertexBuffer.IsDisposed == true)
 			{
-				vertexBuffer = new VertexBuffer(graphicsDevice, typeof(GlyphVertex), vertexBufferSize, ResourceUsage.Dynamic | ResourceUsage.WriteOnly, ResourceManagementMode.Manual);
+				vertexBuffer = new DynamicVertexBuffer(graphicsDevice, typeof(GlyphVertex), vertexBufferSize, BufferUsage.WriteOnly);
 				vertexBufferPosition = 0;
 			}
 
 			if (indexBuffer == null || indexBuffer.IsDisposed == true)
 			{
-				indexBuffer = new IndexBuffer(graphicsDevice, typeof(short), indexBufferSize, ResourceUsage.Dynamic | ResourceUsage.WriteOnly, ResourceManagementMode.Manual);
+				indexBuffer = new DynamicIndexBuffer(graphicsDevice, typeof(short), indexBufferSize, BufferUsage.WriteOnly);
 				indexBuffer.SetData<short>(CreateIndexData());
 			}
 		}
