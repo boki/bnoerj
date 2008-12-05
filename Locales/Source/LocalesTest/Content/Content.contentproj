@@ -1,15 +1,15 @@
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
-    <ProjectGuid>9048ffc5-b309-4797-a391-0e074dec04cd</ProjectGuid>
+    <ProjectGuid>f9c51489-91aa-410f-9348-84eda571b2f9</ProjectGuid>
     <ProjectTypeGuids>{96E2B04D-8817-42c6-938A-82C39BA4D311};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <XnaFrameworkVersion>v3.0</XnaFrameworkVersion>
     <PlatformTarget>x86</PlatformTarget>
     <OutputPath>bin\$(Platform)\$(Configuration)</OutputPath>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <XnaPlatform>Windows</XnaPlatform>
@@ -35,22 +35,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="InMemoryWaveBank.xwb">
-      <Name>InMemoryWaveBank</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Sample.xgs">
-      <Name>Sample</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Sounds.xsb">
-      <Name>Sounds</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="StreamingWaveBank.xwb">
-      <Name>StreamingWaveBank</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <ProjectReference Include="..\..\Locales.Importer\Locales.Importer.csproj">
+      <Project>{56275D0F-E68E-44A6-8097-87C0F89B1DDC}</Project>
+      <Name>Locales.Importer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="de-DE\definition.locale">
+      <Name>definition</Name>
+      <Importer>LocaleImporter</Importer>
+      <Processor>LocaleProcessor</Processor>
+    </Compile>
+    <Compile Include="en-US\definition.locale">
+      <Name>definition</Name>
+      <Importer>LocaleImporter</Importer>
+      <Processor>LocaleProcessor</Processor>
+    </Compile>
+    <Compile Include="ru-RU\definition.locale">
+      <Name>definition</Name>
+      <Importer>LocaleImporter</Importer>
+      <Processor>LocaleProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\v3.0\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

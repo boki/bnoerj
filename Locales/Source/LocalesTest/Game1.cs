@@ -65,34 +65,25 @@ namespace LocaleTest
 		}
 
 		/// <summary>
-		/// Load your graphics content.  If loadAllContent is true, you should
-		/// load content from both ResourceManagementMode pools.  Otherwise, just
-		/// load ResourceManagementMode.Manual content.
+		/// Called when graphics resources need to be loaded. Override this
+		/// method to load any game-specific graphics resources.
 		/// </summary>
-		/// <param name="loadAllContent">Which type of content to load.</param>
-		protected override void LoadGraphicsContent(bool loadAllContent)
+		protected override void LoadContent()
 		{
-			if (loadAllContent)
-			{
-				glyphBatch = new GlyphBatch(graphics.GraphicsDevice);
-			}
+			base.LoadContent();
 
-			// TODO: Load any ResourceManagementMode.Manual content
+			glyphBatch = new GlyphBatch(graphics.GraphicsDevice);
 		}
 
 		/// <summary>
-		/// Unload your graphics content.  If unloadAllContent is true, you should
-		/// unload content from both ResourceManagementMode pools.  Otherwise, just
-		/// unload ResourceManagementMode.Manual content.  Manual content will get
-		/// Disposed by the GraphicsDevice during a Reset.
+		/// Called when graphics resources need to be unloaded. Override this
+		/// method to unload any game-specific graphics resources.
 		/// </summary>
-		/// <param name="unloadAllContent">Which type of content to unload.</param>
-		protected override void UnloadGraphicsContent(bool unloadAllContent)
+		protected override void UnloadContent()
 		{
-			if (unloadAllContent == true)
-			{
-				content.Unload();
-			}
+			base.UnloadContent();
+
+			content.Unload();
 		}
 
 		/// <summary>

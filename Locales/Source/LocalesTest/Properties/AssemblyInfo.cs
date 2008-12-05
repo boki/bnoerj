@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("KeyboardLayout")]
-[assembly: AssemblyProduct("KeyboardLayout")]
+[assembly: AssemblyTitle("LocalesTest")]
+[assembly: AssemblyProduct("LocalesTest")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyCompany("")]
 
-[assembly: AssemblyCopyright("Copyright ©  2007")]
+[assembly: AssemblyCopyright("Copyright ©  2008")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,4 +20,14 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("566eb9e3-3aa8-45d9-821b-988a22a15f5e")]
+[assembly: Guid("984cb58f-6636-40c4-bcd0-2c700306c944")]
+
+
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+[assembly: AssemblyVersion("1.0.0.0")]

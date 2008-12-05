@@ -14,6 +14,9 @@
 #define _WIN32_DCOM
 #define _CRT_SECURE_NO_DEPRECATE
 #include <windows.h>
+#if defined(DEBUG) | defined(_DEBUG) | defined(CHECKED_BUILD)
+#include <crtdbg.h>
+#endif
 #pragma warning(push)
 #pragma warning(disable: 4793) // xact3wb.h(130): '__asm': causes native code generation for function 'void XACTWaveBank::SwapBytes(DWORD &)'
 #include <xact3.h>
