@@ -58,7 +58,7 @@ namespace Bnoerj.Locales.Importer
 			}
 			else
 			{
-				//FIXME: Define a default font for the culture
+				// FIXME: Define a default font for the culture
 				fontName = "Arial";
 			}
 

@@ -21,7 +21,7 @@ namespace Bnoerj.Locales.Importer
 	{
 		protected override void Write(ContentWriter output, LocaleContent value)
 		{
-			//FIXME: Write name?
+			// REVIEW: Write name?
 			output.Write(value.CultureInfo.LCID);
 			output.WriteObject<KeyboardLayoutContent>(value.KeyboardLayout);
 			output.WriteObject<FontContent>(value.Font);

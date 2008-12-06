@@ -309,7 +309,7 @@ namespace Bnoerj.Locales.Text
 				if ((flags & TextFormatFlags.SingleLine) == TextFormatFlags.Default &&
 					(c == '\n' || (hasGlyph == true && pos.X + glyph.Size.X > proposedSize.X)))
 				{
-					//FIXME: handle line break on end of words
+					// FIXME: handle line break on end of words
 
 					textRuns.Add(new TextRun(glyphs.ToArray(), new TextRectangle(0, size.Y - font.Height, pos.X, font.Height)));
 					glyphs.Clear();

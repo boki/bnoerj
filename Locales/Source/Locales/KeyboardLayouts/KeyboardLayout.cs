@@ -137,9 +137,9 @@ namespace Bnoerj.Locales.KeyboardLayouts
 			ShiftState shiftState =
 				(state.IsKeyDown(XnaKeys.LeftShift) || state.IsKeyDown(XnaKeys.RightShift) ? ShiftState.Shft : 0) |
 				(state.IsKeyDown(XnaKeys.LeftControl) || state.IsKeyDown(XnaKeys.RightControl) ? ShiftState.Ctrl : 0) |
-				//FIXME: RightAlt may be specialShiftVk, even though ShiftState.Menu is not supported in keyboard layouts
+				// FIXME: RightAlt may be specialShiftVk, even though ShiftState.Menu is not supported in keyboard layouts
 				(state.IsKeyDown(XnaKeys.LeftAlt) || state.IsKeyDown(XnaKeys.RightAlt) ? ShiftState.Menu : 0) |
-				//FIXME: ensure that XnaKeys == KeysEx
+				// FIXME: ensure that XnaKeys == KeysEx
 				(specialShiftVk != KeysEx.None ? state.IsKeyDown((XnaKeys)specialShiftVk) ? ShiftState.Spcl : 0 : 0);
 
 			// Toggle caps lock state on first caps lock press

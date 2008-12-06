@@ -34,7 +34,7 @@ namespace Bnoerj.Locales.Importer
 		KeyboardLayoutContent ProcessKeyboardLayout(LocaleSource input, ContentProcessorContext context)
 		{
 			// Load keyboard layout
-			//FIXME: Use localeSource.CultureInfo.KeyboardLayoutId?
+			// FIXME: Use localeSource.CultureInfo.KeyboardLayoutId?
 			String klid = String.Format("{0:x8}", input.CultureInfo.KeyboardLayoutId);
 			context.Logger.LogMessage("Using keyboard layout {0} for locale {1}", klid, input.CultureInfo.Name);
 			KeyboardLayoutSource kls = new KeyboardLayoutSource(klid);
@@ -76,7 +76,7 @@ namespace Bnoerj.Locales.Importer
 
 		void GetCodePointsFromCharacters(IEnumerable<char> characters, List<char> codePoints)
 		{
-			//FIXME: consider surrogates
+			// FIXME: consider surrogates
 			foreach (char c in characters)
 			{
 				if (char.IsControl(c) == false &&
