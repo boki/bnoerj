@@ -23,7 +23,7 @@ namespace Bnoerj.Locales
 		ContentManager content;
 		String contentRootPath;
 		Locale locale;
-		//FIXME: Include TextInputService?
+		// FIXME: Include TextInputService?
 
 		/// <summary>
 		/// Initializes a new instance of LocaleService.
@@ -85,7 +85,7 @@ namespace Bnoerj.Locales
 		{
 			base.Initialize();
 
-			//FIXME: move into LoadGraphicsContent() because of the font texture
+			// FIXME: move into LoadGraphicsContent() because of the font texture
 			// Use the users locale as default
 			LoadLocale(Thread.CurrentThread.CurrentCulture.Name);
 		}
@@ -94,7 +94,7 @@ namespace Bnoerj.Locales
 		{
 			if (locale != null && locale.IsDisposed == false)
 			{
-				//FIXME: disposing the font textures will break rendering when the locale is used again
+				// FIXME: disposing the font textures will break rendering when the locale is used again
 				//locale.Dispose();
 			}
 

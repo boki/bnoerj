@@ -65,7 +65,7 @@ namespace Bnoerj.Locales.Text
 			get { return delay; }
 			set
 			{
-				//FIXME: check for Game.IsFixedTimeStep/TargetElapsedTime?
+				// FIXME: check for Game.IsFixedTimeStep/TargetElapsedTime?
 				delay = Math.Max(0, Math.Min(value, 3));
 				delayTime = (double)(250 + 250 * delay);
 			}
@@ -84,7 +84,7 @@ namespace Bnoerj.Locales.Text
 			get { return repeatSpeed; }
 			set
 			{
-				//FIXME: check for Game.IsFixedTimeStep/TargetElapsedTime?
+				// FIXME: check for Game.IsFixedTimeStep/TargetElapsedTime?
 				repeatSpeed = Math.Max(0, Math.Min(value, 31));
 				// Repeat rate per second = (27.5/31 * repeatRate + 2.5) per second
 				double repeatsPerSec = 2.5 + (27.5 / 31.0 * (double)repeatSpeed);

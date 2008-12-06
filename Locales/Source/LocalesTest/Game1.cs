@@ -59,8 +59,6 @@ namespace LocaleTest
 		/// </summary>
 		protected override void Initialize()
 		{
-			// TODO: Add your initialization logic here
-
 			base.Initialize();
 		}
 
@@ -104,10 +102,10 @@ namespace LocaleTest
 
 			if (textInputService.IsKeyReleased(KeysEx.VK_TAB) == true)
 			{
-				//FIXME: Change current locale
+				// FIXME: Change current locale
 				curLocalNameIndex = (curLocalNameIndex + 1) % localeNames.Length;
 				localeService.LoadLocale(localeNames[curLocalNameIndex]);
-				//FIXME: Move elsewhere, e.g. use an event
+				// FIXME: Move elsewhere, e.g. use an event
 				textInputService.Initialize();
 				inputText = "";
 			}
@@ -124,8 +122,6 @@ namespace LocaleTest
 		protected override void Draw(GameTime gameTime)
 		{
 			graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
-
-			// TODO: Add your drawing code here
 
 			Font font = localeService.CurrentLocale.Font;
 			float fontHeight = font.Height;

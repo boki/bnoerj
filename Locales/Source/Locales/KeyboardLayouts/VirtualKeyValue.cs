@@ -28,7 +28,7 @@ namespace Bnoerj.Locales.KeyboardLayouts
 		/// <summary>Indicator if this virtual key is a dead key or not.</summary>
 		public readonly bool IsDeadKey;
 
-		//FIXME: should be internal, but the Importer needs to construct this type
+		// REVIEW: should be internal, but the Importer needs to construct this type
 		public VirtualKeyValue(String characters, bool isDeadKey)
 		{
 			ScanCode = 0;
