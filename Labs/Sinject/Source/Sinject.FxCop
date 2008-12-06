@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FxCopProject Version="1.36" Name="Sinject FxCop Project">
+ <ProjectOptions>
+  <SharedProject>True</SharedProject>
+  <Stylesheet Apply="False">c:\program files\microsoft fxcop 1.36\Xml\FxCopReport.xsl</Stylesheet>
+  <SaveMessages>
+   <Project Status="Active, Excluded" NewOnly="False" />
+   <Report Status="Active" NewOnly="False" />
+  </SaveMessages>
+  <ProjectFile Compress="True" DefaultTargetCheck="True" DefaultRuleCheck="True" SaveByRuleGroup="" Deterministic="True" />
+  <EnableMultithreadedLoad>True</EnableMultithreadedLoad>
+  <EnableMultithreadedAnalysis>True</EnableMultithreadedAnalysis>
+  <SourceLookup>True</SourceLookup>
+  <AnalysisExceptionsThreshold>10</AnalysisExceptionsThreshold>
+  <RuleExceptionsThreshold>1</RuleExceptionsThreshold>
+  <Spelling Locale="en-US" />
+  <OverrideRuleVisibilities>False</OverrideRuleVisibilities>
+  <CustomDictionaries SearchFxCopDir="True" SearchUserProfile="True" SearchProjectDir="True" />
+  <SearchGlobalAssemblyCache>False</SearchGlobalAssemblyCache>
+  <DeadlockDetectionTimeout>120</DeadlockDetectionTimeout>
+  <IgnoreGeneratedCode>False</IgnoreGeneratedCode>
+ </ProjectOptions>
+ <Targets>
+  <Target Name="$(ProjectDir)/Sinject/bin/x86/Debug/Bnoerj.Sinject.dll" Analyze="True" AnalyzeAllChildren="True" />
+ </Targets>
+ <Rules>
+  <RuleFiles>
+   <RuleFile Name="$(FxCopDir)\Rules\DesignRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\GlobalizationRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\InteroperabilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\MobilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\NamingRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\PerformanceRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\PortabilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\SecurityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\UsageRules.dll" Enabled="True" AllRulesEnabled="True" />
+  </RuleFiles>
+  <Groups />
+  <Settings />
+ </Rules>
+ <FxCopReport Version="1.36">
+  <Targets>
+   <Target Name="$(ProjectDir)/Sinject/bin/x86/Debug/Bnoerj.Sinject.dll">
+    <Modules>
+     <Module Name="bnoerj.sinject.dll">
+      <Messages>
+       <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Created="2008-12-06 07:19:54Z">
+        <Issue Name="NoStrongName">
+         <Item>'Bnoerj.Sinject.dll'</Item>
+        </Issue>
+       </Message>
+      </Messages>
+      <Namespaces>
+       <Namespace Name="Bnoerj.Sinject">
+        <Types>
+         <Type Name="Sinject">
+          <Messages>
+           <Message TypeName="TypeNamesShouldNotMatchNamespaces" Category="Microsoft.Naming" CheckId="CA1724" Created="2008-12-06 07:19:54Z">
+            <Issue>
+             <Item>'Sinject'</Item>
+             <Item>Bnoerj.Sinject</Item>
+            </Issue>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#Register`1()">
+            <Messages>
+             <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Excluded" Created="2008-12-06 07:19:54Z">
+              <Issue>
+               <Item>'Sinject.Register&lt;TConcrete&gt;()'</Item>
+               <Item>'TConcrete'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Register`1(System.Object)">
+            <Messages>
+             <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Excluded" Created="2008-12-06 07:19:54Z">
+              <Issue>
+               <Item>'Sinject.Register&lt;TInterface&gt;(object)'</Item>
+               <Item>'TInterface'</Item>
+              </Issue>
+              <Notes>
+               <User Name="bg">
+                <Note Id="0" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Register`2()">
+            <Messages>
+             <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Excluded" Created="2008-12-06 07:19:54Z">
+              <Issue>
+               <Item>'Sinject.Register&lt;TInterface, TConcrete&gt;()'</Item>
+               <Item>'TConcrete'</Item>
+              </Issue>
+              <Issue>
+               <Item>'Sinject.Register&lt;TInterface, TConcrete&gt;()'</Item>
+               <Item>'TInterface'</Item>
+              </Issue>
+              <Notes>
+               <User Name="bg">
+                <Note Id="0" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Register`2(Bnoerj.Sinject.Behavior)">
+            <Messages>
+             <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Excluded" Created="2008-12-06 07:19:54Z">
+              <Issue>
+               <Item>'Sinject.Register&lt;TInterface, TConcrete&gt;(Behavior)'</Item>
+               <Item>'TConcrete'</Item>
+              </Issue>
+              <Issue>
+               <Item>'Sinject.Register&lt;TInterface, TConcrete&gt;(Behavior)'</Item>
+               <Item>'TInterface'</Item>
+              </Issue>
+              <Notes>
+               <User Name="bg">
+                <Note Id="0" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Resolve`1()">
+            <Messages>
+             <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Excluded" Created="2008-12-06 07:19:54Z">
+              <Issue>
+               <Item>'Sinject.Resolve&lt;T&gt;()'</Item>
+               <Item>'T'</Item>
+              </Issue>
+              <Notes>
+               <User Name="bg">
+                <Note Id="0" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Resolve`1(System.Object[])">
+            <Messages>
+             <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Excluded" Created="2008-12-06 07:19:54Z">
+              <Issue>
+               <Item>'Sinject.Resolve&lt;T&gt;(params object[])'</Item>
+               <Item>'T'</Item>
+              </Issue>
+              <Notes>
+               <User Name="bg">
+                <Note Id="0" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="SinjectStatic">
+          <Members>
+           <Member Name="#Register`1()">
+            <Messages>
+             <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Excluded" Created="2008-12-06 07:19:54Z">
+              <Issue>
+               <Item>'SinjectStatic.Register&lt;TConcrete&gt;()'</Item>
+               <Item>'TConcrete'</Item>
+              </Issue>
+              <Notes>
+               <User Name="bg">
+                <Note Id="0" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Register`1(System.Object)">
+            <Messages>
+             <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Excluded" Created="2008-12-06 07:19:54Z">
+              <Issue>
+               <Item>'SinjectStatic.Register&lt;TInterface&gt;(object)'</Item>
+               <Item>'TInterface'</Item>
+              </Issue>
+              <Notes>
+               <User Name="bg">
+                <Note Id="0" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Register`2()">
+            <Messages>
+             <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Excluded" Created="2008-12-06 07:19:54Z">
+              <Issue>
+               <Item>'SinjectStatic.Register&lt;TInterface, TConcrete&gt;()'</Item>
+               <Item>'TConcrete'</Item>
+              </Issue>
+              <Issue>
+               <Item>'SinjectStatic.Register&lt;TInterface, TConcrete&gt;()'</Item>
+               <Item>'TInterface'</Item>
+              </Issue>
+              <Notes>
+               <User Name="bg">
+                <Note Id="0" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Register`2(Bnoerj.Sinject.Behavior)">
+            <Messages>
+             <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Excluded" Created="2008-12-06 07:19:54Z">
+              <Issue>
+               <Item>'SinjectStatic.Register&lt;TInterface, TConcrete&gt;(Behavior)'</Item>
+               <Item>'TConcrete'</Item>
+              </Issue>
+              <Issue>
+               <Item>'SinjectStatic.Register&lt;TInterface, TConcrete&gt;(Behavior)'</Item>
+               <Item>'TInterface'</Item>
+              </Issue>
+              <Notes>
+               <User Name="bg">
+                <Note Id="0" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Resolve`1()">
+            <Messages>
+             <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Excluded" Created="2008-12-06 07:19:54Z">
+              <Issue>
+               <Item>'SinjectStatic.Resolve&lt;T&gt;()'</Item>
+               <Item>'T'</Item>
+              </Issue>
+              <Notes>
+               <User Name="bg">
+                <Note Id="0" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Resolve`1(System.Object[])">
+            <Messages>
+             <Message TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004" Status="Excluded" Created="2008-12-06 07:19:54Z">
+              <Issue>
+               <Item>'SinjectStatic.Resolve&lt;T&gt;(params object[])'</Item>
+               <Item>'T'</Item>
+              </Issue>
+              <Notes>
+               <User Name="bg">
+                <Note Id="0" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="Bnoerj.Sinject.Internal">
+        <Types>
+         <Type Name="ActivatorBase">
+          <Members>
+           <Member Name="#InjectDependencies(Bnoerj.Sinject.Sinject,System.Object,System.Reflection.FieldInfo[],System.Reflection.PropertyInfo[])">
+            <Messages>
+             <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Created="2008-12-06 07:19:54Z" FixCategory="NonBreaking">
+              <Issue>
+               <Item>'ActivatorBase.InjectDependencies(Sinject, object, FieldInfo[], PropertyInfo[])'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+  </Targets>
+  <Notes>
+   <User Name="bg">
+    <Note Id="0" Modified="2008-12-06 07:41:15Z">The Sinject container is designed to make extensive use of explicit generic type parameters.</Note>
+   </User>
+  </Notes>
+  <Rules>
+   <Rule TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210">
+    <Resolution Name="NoStrongName">Sign {0} with a strong name key.</Resolution>
+   </Rule>
+   <Rule TypeName="GenericMethodsShouldProvideTypeParameter" Category="Microsoft.Design" CheckId="CA1004">
+    <Resolution Name="Default">Consider a design where {0} doesn't require explicit type parameter {1} in any call to it.</Resolution>
+   </Rule>
+   <Rule TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822">
+    <Resolution Name="Default">The 'this' parameter (or 'Me' in Visual Basic) of {0} is never used. Mark the member as static (or Shared in Visual Basic) or use 'this'/'Me' in the method body or at least one property accessor, if appropriate.</Resolution>
+   </Rule>
+   <Rule TypeName="TypeNamesShouldNotMatchNamespaces" Category="Microsoft.Naming" CheckId="CA1724">
+    <Resolution Name="Default">The type name {0} conflicts in whole or in part with the namespace name '{1}'. Change either name to eliminate the conflict.</Resolution>
+   </Rule>
+  </Rules>
+ </FxCopReport>
+</FxCopProject>
