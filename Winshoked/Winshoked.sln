@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bnoerj.Winshoked", "Source\Winshoked\Winshoked.vcproj", "{623DACC7-9425-4AE8-B1EC-2D21BA5D5918}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "Source\Demo\Demo.csproj", "{6FBE3B07-9F7F-4A03-ADE4-E60488A79C78}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs03.codeplex.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Source\\Demo\\Content\\Content.contentproj
+		SccProjectTopLevelParentUniqueName1 = Source\\Demo\\Demo.csproj
+		SccProjectName1 = Source/Demo/Content
+		SccLocalPath1 = Source\\Demo\\Content
+		SccProjectUniqueName2 = Source\\Demo\\Demo.csproj
+		SccProjectName2 = Source/Demo
+		SccLocalPath2 = Source\\Demo
+		SccProjectUniqueName3 = Source\\Winshoked\\Winshoked.vcproj
+		SccProjectName3 = Source/Winshoked
+		SccLocalPath3 = Source\\Winshoked
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|Win32 = Debug|Win32
+		Debug|x86 = Debug|x86
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|Win32 = Release|Win32
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{623DACC7-9425-4AE8-B1EC-2D21BA5D5918}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{623DACC7-9425-4AE8-B1EC-2D21BA5D5918}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{623DACC7-9425-4AE8-B1EC-2D21BA5D5918}.Debug|Win32.ActiveCfg = Debug|Win32
+		{623DACC7-9425-4AE8-B1EC-2D21BA5D5918}.Debug|Win32.Build.0 = Debug|Win32
+		{623DACC7-9425-4AE8-B1EC-2D21BA5D5918}.Debug|x86.ActiveCfg = Debug|Win32
+		{623DACC7-9425-4AE8-B1EC-2D21BA5D5918}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{623DACC7-9425-4AE8-B1EC-2D21BA5D5918}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{623DACC7-9425-4AE8-B1EC-2D21BA5D5918}.Release|Win32.ActiveCfg = Release|Win32
+		{623DACC7-9425-4AE8-B1EC-2D21BA5D5918}.Release|Win32.Build.0 = Release|Win32
+		{623DACC7-9425-4AE8-B1EC-2D21BA5D5918}.Release|x86.ActiveCfg = Release|Win32
+		{6FBE3B07-9F7F-4A03-ADE4-E60488A79C78}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{6FBE3B07-9F7F-4A03-ADE4-E60488A79C78}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{6FBE3B07-9F7F-4A03-ADE4-E60488A79C78}.Debug|Win32.ActiveCfg = Debug|x86
+		{6FBE3B07-9F7F-4A03-ADE4-E60488A79C78}.Debug|x86.ActiveCfg = Debug|x86
+		{6FBE3B07-9F7F-4A03-ADE4-E60488A79C78}.Debug|x86.Build.0 = Debug|x86
+		{6FBE3B07-9F7F-4A03-ADE4-E60488A79C78}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{6FBE3B07-9F7F-4A03-ADE4-E60488A79C78}.Release|Mixed Platforms.Build.0 = Release|x86
+		{6FBE3B07-9F7F-4A03-ADE4-E60488A79C78}.Release|Win32.ActiveCfg = Release|x86
+		{6FBE3B07-9F7F-4A03-ADE4-E60488A79C78}.Release|x86.ActiveCfg = Release|x86
+		{6FBE3B07-9F7F-4A03-ADE4-E60488A79C78}.Release|x86.Build.0 = Release|x86
+		{95B02561-8833-4578-AC61-9B014E1A4354}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{95B02561-8833-4578-AC61-9B014E1A4354}.Debug|Win32.ActiveCfg = Debug|x86
+		{95B02561-8833-4578-AC61-9B014E1A4354}.Debug|x86.ActiveCfg = Debug|x86
+		{95B02561-8833-4578-AC61-9B014E1A4354}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{95B02561-8833-4578-AC61-9B014E1A4354}.Release|Win32.ActiveCfg = Release|x86
+		{95B02561-8833-4578-AC61-9B014E1A4354}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
