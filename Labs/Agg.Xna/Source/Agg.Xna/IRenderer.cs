@@ -4,7 +4,7 @@
 //
 // This software is licensed as described in the file license.txt, which
 // you should have received as part of this distribution. The terms
-// are also available at http://www.codeplex.com/Bnoerj/Project/License.aspx.
+// are also available at http://bnoerj.codeplex.com/license.
 
 namespace Agg.Xna
 {
