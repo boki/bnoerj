@@ -14,12 +14,12 @@ namespace Bnoerj.Sinject.Tests
 	/// <summary>
 	/// Provides tests for the Sinject class.
 	/// </summary>
-	public class SinjectFacts
+	public class ContainerTests
 	{
 		[Fact]
-		public void RegisterAndCheckSingletonFact()
+		public void Register_SingletonBehavior_ResolveShouldCreateOneInstanceOnly()
 		{
-			using (Sinject container = new Sinject())
+			using (Container container = new Container())
 			{
 				container.Register<IMock, Concrete>();
 
@@ -30,9 +30,9 @@ namespace Bnoerj.Sinject.Tests
 		}
 
 		[Fact]
-		public void RegisterAndCheckPrebuildSingletonFact()
+		public void Register_PrecreatedSingleton_ResolveShouldReturnTheSameInstance()
 		{
-			using (Sinject container = new Sinject())
+			using (Container container = new Container())
 			{
 				Concrete singleton = new Concrete();
 				container.Register<IMock>(singleton);
@@ -43,55 +43,51 @@ namespace Bnoerj.Sinject.Tests
 		}
 
 		[Fact]
-		public void RegisterAndCheckTransientFact()
-        {
-            using (var container = new Sinject())
-            {
-                container.Register<IMock, Concrete>(Behavior.Transient);
+		public void Register_TransientBehavior_ResolveShouldCreateOneInstancePerCall()
+		{
+			using (var container = new Container())
+			{
+				container.Register<IMock, Concrete>(Behavior.Transient);
 
-                var concreteInstance1 = container.Resolve<IMock>();
-                var concreteInstance2 = container.Resolve<IMock>();
-                Assert.NotSame(concreteInstance1, concreteInstance2);
-            }
-        }
+				var concreteInstance1 = container.Resolve<IMock>();
+				var concreteInstance2 = container.Resolve<IMock>();
+				Assert.NotSame(concreteInstance1, concreteInstance2);
+			}
+		}
 
-        [Fact]
-        public void RegisterAndCheckInjectionFact()
-        {
-			using (var container = new Sinject())
-            {
-                container.
+		[Fact]
+		public void Resolve_DependencyProperty_ShouldBeInjected()
+		{
+			using (var container = new Container())
+			{
+				container.
 					Register<Dependency>().
 					Register<IMock, Concrete>(Behavior.Transient);
 
-                var concreteInstance1 = container.Resolve<IMock>();
-                Assert.NotNull(concreteInstance1);
-
+				var concreteInstance1 = container.Resolve<IMock>();
 				var concrete = concreteInstance1 as Concrete;
-                Assert.NotNull(concrete);
 				Assert.NotNull(concrete.Dependency);
-            }
-        }
+			}
+		}
 
-        [Fact]
-        public void ConstructorInjectionFact()
-        {
-			using (var container = new Sinject())
-            {
-                container.
+		[Fact]
+		public void Resolve_ConstructorDependency_ShouldBeInjected()
+		{
+			using (var container = new Container())
+			{
+				container.
 					Register<Dependency>().
 					Register<Concrete2>();
 
-                var concreteInstance = container.Resolve<Concrete2>();
-                Assert.NotNull(concreteInstance);
-                Assert.NotNull(concreteInstance.Dependency);
-            }
-        }
+				var concreteInstance = container.Resolve<Concrete2>();
+				Assert.NotNull(concreteInstance.Dependency);
+			}
+		}
 
 		[Fact]
-		public void DefaultConstructorFact()
+		public void Resolve_ProvidedConstructorDependencies_ShouldBeInjected()
 		{
-			using (var container = new Sinject())
+			using (var container = new Container())
 			{
 				Dependency dependency1 = new Dependency();
 				Dependency dependency2 = new Dependency();
@@ -99,7 +95,6 @@ namespace Bnoerj.Sinject.Tests
 					Register<Concrete3>();
 
 				var concreteInstance = container.Resolve<Concrete3>(dependency1, dependency2);
-				Assert.NotNull(concreteInstance);
 				Assert.Same(concreteInstance.Dependency1, dependency1);
 				Assert.Same(concreteInstance.Dependency2, dependency2);
 			}
