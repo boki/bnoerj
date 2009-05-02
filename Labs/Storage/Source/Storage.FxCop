@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FxCopProject Version="1.36" Name="My FxCop Project">
+ <ProjectOptions>
+  <SharedProject>True</SharedProject>
+  <Stylesheet Apply="False">c:\program files\microsoft fxcop 1.36\Xml\FxCopReport.xsl</Stylesheet>
+  <SaveMessages>
+   <Project Status="Active, Excluded" NewOnly="False" />
+   <Report Status="Active" NewOnly="False" />
+  </SaveMessages>
+  <ProjectFile Compress="True" DefaultTargetCheck="True" DefaultRuleCheck="True" SaveByRuleGroup="" Deterministic="True" />
+  <EnableMultithreadedLoad>True</EnableMultithreadedLoad>
+  <EnableMultithreadedAnalysis>True</EnableMultithreadedAnalysis>
+  <SourceLookup>True</SourceLookup>
+  <AnalysisExceptionsThreshold>10</AnalysisExceptionsThreshold>
+  <RuleExceptionsThreshold>1</RuleExceptionsThreshold>
+  <Spelling Locale="en-US" />
+  <OverrideRuleVisibilities>False</OverrideRuleVisibilities>
+  <CustomDictionaries SearchFxCopDir="True" SearchUserProfile="True" SearchProjectDir="True" />
+  <SearchGlobalAssemblyCache>False</SearchGlobalAssemblyCache>
+  <DeadlockDetectionTimeout>120</DeadlockDetectionTimeout>
+  <IgnoreGeneratedCode>False</IgnoreGeneratedCode>
+ </ProjectOptions>
+ <Targets>
+  <AssemblyReferenceDirectories>
+   <Directory>C:/Program Files/Microsoft XNA/XNA Game Studio/v3.0/References/Windows/x86/</Directory>
+  </AssemblyReferenceDirectories>
+  <Target Name="$(ProjectDir)/Storage/bin/x86/Debug/Bnoerj.Storage.x86.dll" Analyze="True" AnalyzeAllChildren="True" />
+ </Targets>
+ <Rules>
+  <RuleFiles>
+   <RuleFile Name="$(FxCopDir)\Rules\DesignRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\GlobalizationRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\InteroperabilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\MobilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\NamingRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\PerformanceRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\PortabilityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\SecurityRules.dll" Enabled="True" AllRulesEnabled="True" />
+   <RuleFile Name="$(FxCopDir)\Rules\UsageRules.dll" Enabled="True" AllRulesEnabled="True" />
+  </RuleFiles>
+  <Groups />
+  <Settings />
+ </Rules>
+ <FxCopReport Version="1.36">
+  <Targets>
+   <Target Name="$(ProjectDir)/Storage/bin/x86/Debug/Bnoerj.Storage.x86.dll">
+    <Modules>
+     <Module Name="bnoerj.storage.x86.dll">
+      <Messages>
+       <Message TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014" Created="2009-05-02 10:48:05Z">
+        <Issue>
+         <Item>'Bnoerj.Storage.x86.dll'</Item>
+        </Issue>
+       </Message>
+       <Message TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210" Status="Excluded" Created="2009-05-02 10:48:05Z">
+        <Issue Name="NoStrongName">
+         <Item>'Bnoerj.Storage.x86.dll'</Item>
+        </Issue>
+       </Message>
+       <Message Id="x" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Excluded" Created="2009-05-02 10:48:05Z">
+        <Issue Name="Assembly">
+         <Item>x</Item>
+         <Item>'Bnoerj.Storage.x86.dll'</Item>
+         <Item>X</Item>
+        </Issue>
+        <Notes>
+         <User Name="bg">
+          <Note Id="0" />
+         </User>
+        </Notes>
+       </Message>
+      </Messages>
+      <Namespaces>
+       <Namespace Name="Bnoerj.Storage">
+        <Types>
+         <Type Name="StorageProviderStatusChangedEventArgs">
+          <Members>
+           <Member Name="#Status">
+            <Accessors>
+             <Accessor Name="#get_Status()">
+              <Messages>
+               <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2009-05-02 10:48:05Z">
+                <Issue>
+                 <Item>'StorageProviderStatusChangedEventArgs.Status.get()'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="StorageRequirements">
+          <Members>
+           <Member Name="#DirectoryCount">
+            <Messages>
+             <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Excluded" Created="2009-05-02 10:48:05Z">
+              <Issue>
+               <Item>'StorageRequirements.DirectoryCount'</Item>
+              </Issue>
+              <Notes>
+               <User Name="bg">
+                <Note Id="1" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Player">
+            <Messages>
+             <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Excluded" Created="2009-05-02 10:48:05Z">
+              <Issue>
+               <Item>'StorageRequirements.Player'</Item>
+              </Issue>
+              <Notes>
+               <User Name="bg">
+                <Note Id="1" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#SizeInBytes">
+            <Messages>
+             <Message TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051" Status="Excluded" Created="2009-05-02 10:48:05Z">
+              <Issue>
+               <Item>'StorageRequirements.SizeInBytes'</Item>
+              </Issue>
+              <Notes>
+               <User Name="bg">
+                <Note Id="1" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="StorageSession">
+          <Members>
+           <Member Name="#Container">
+            <Accessors>
+             <Accessor Name="#get_Container()">
+              <Messages>
+               <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Created="2009-05-02 10:48:05Z">
+                <Issue>
+                 <Item>'StorageSession.Container.get()'</Item>
+                </Issue>
+               </Message>
+              </Messages>
+             </Accessor>
+            </Accessors>
+           </Member>
+          </Members>
+         </Type>
+        </Types>
+       </Namespace>
+      </Namespaces>
+     </Module>
+    </Modules>
+   </Target>
+  </Targets>
+  <Notes>
+   <User Name="bg">
+    <Note Id="0" Modified="2009-05-02 10:49:44Z">The case of th x in x86 is correct.</Note>
+    <Note Id="1" Modified="2009-05-02 10:50:24Z">The fields are readonly value types.</Note>
+   </User>
+  </Notes>
+  <Rules>
+   <Rule TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210">
+    <Resolution Name="NoStrongName">Sign {0} with a strong name key.</Resolution>
+   </Rule>
+   <Rule TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811">
+    <Resolution Name="Default">{0} appears to have no upstream public or protected callers.</Resolution>
+   </Rule>
+   <Rule TypeName="DoNotDeclareVisibleInstanceFields" Category="Microsoft.Design" CheckId="CA1051">
+    <Resolution Name="Default">Because field {0} is visible outside of its declaring type, change its accessibility to private and add a property, with the same accessibility as the field has currently, to provide access to it.</Resolution>
+   </Rule>
+   <Rule TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709">
+    <Resolution Name="Assembly">Correct the casing of '{0}' in assembly name {1} by changing it to '{2}'.</Resolution>
+   </Rule>
+   <Rule TypeName="MarkAssembliesWithClsCompliant" Category="Microsoft.Design" CheckId="CA1014">
+    <Resolution Name="Default">Mark {0} with CLSCompliant(true) because it exposes externally visible types.</Resolution>
+   </Rule>
+  </Rules>
+ </FxCopReport>
+</FxCopProject>
