@@ -17,6 +17,8 @@ namespace Bnoerj.ColorAnalyzer
 		enum ColorView
 		{
 			ColorBrightness,
+			ColorClipping,
+			ColorStretching,
 			Protanopia,
 			Deutanopia,
 			Tritanopia,
@@ -38,8 +40,8 @@ namespace Bnoerj.ColorAnalyzer
 		Texture2D blankTexture;
 		ResolveTexture2D resolveTarget;
 
-		Effect effect;
-		EffectParameter paramTexture;
+		ColorEffect[] effects;
+		ColorEffect currentEffect;
 
 		VertexPositionTexture[] vertices;
 		VertexDeclaration vertexDeclaration;
@@ -82,12 +84,7 @@ namespace Bnoerj.ColorAnalyzer
 
 				font = content.Load<SpriteFont>("Font");
 
-				blankTexture = new Texture2D(GraphicsDevice, 1, 1, 1, TextureUsage.None, SurfaceFormat.Color);
-				var colors = new Color[]
-				{
-					Color.White
-				};
-				blankTexture.SetData<Color>(colors);
+				CreateTexture();
 
 				var presentationParams = GraphicsDevice.PresentationParameters;
 				var width = presentationParams.BackBufferWidth;
@@ -96,30 +93,9 @@ namespace Bnoerj.ColorAnalyzer
 					width, height, 1,
 					presentationParams.BackBufferFormat);
 
-				effect = content.Load<Effect>("Shaders/ColorView");
-				paramTexture = effect.Parameters["Texture"];
+				LoadEffects(width, height);
 
-				effect.Parameters["ViewportSize"].SetValue(new Vector2(width, height));
-
-				var device = GraphicsDevice;
-				vertices = new VertexPositionTexture[4]
-				{
-					new VertexPositionTexture(
-						new Vector3(width, height, 0.0f),
-						new Vector2(1.0f, 1.0f)),
-					new VertexPositionTexture(
-						new Vector3(0.0f, height, 0.0f),
-						new Vector2(0.0f, 1.0f)),
-					new VertexPositionTexture(
-						new Vector3(0.0f, 0.0f, 0.0f),
-						new Vector2(0.0f, 0.0f)),
-					new VertexPositionTexture(
-						new Vector3(width, 0.0f, 0.0f),
-						new Vector2(1.0f, 0.0f)),
-				};
-
-				vertexDeclaration = new VertexDeclaration(device, VertexPositionTexture.VertexElements);
-				vertexBuffer = new VertexBuffer(device, typeof(VertexPositionTexture), 4, BufferUsage.WriteOnly);
+				CreateVertices(width, height);
 
 				ChangeView(0);
 			}
@@ -151,13 +127,13 @@ namespace Bnoerj.ColorAnalyzer
 				{
 					showUi = !showUi;
 				}
-				else if (IsNewKeyPress(keyboardState, Keys.Left) == true ||
+				else if (IsNewKeyPress(keyboardState, Keys.Right) == true ||
 					IsNewButtonPress(gamePadState, Buttons.DPadRight) == true ||
 					IsNewButtonPress(gamePadState, Buttons.A) == true)
 				{
 					ChangeView((int)currentView + 1);
 				}
-				else if (IsNewKeyPress(keyboardState, Keys.Right) == true ||
+				else if (IsNewKeyPress(keyboardState, Keys.Left) == true ||
 					IsNewButtonPress(gamePadState, Buttons.DPadLeft) == true)
 				{
 					ChangeView((int)currentView - 1);
@@ -183,23 +159,90 @@ namespace Bnoerj.ColorAnalyzer
 
 			GraphicsDevice.VertexDeclaration = vertexDeclaration;
 
-			paramTexture.SetValue(resolveTarget);
+			currentEffect.Texture = resolveTarget;
 
-			effect.Begin();
-
-			var pass = effect.CurrentTechnique.Passes[0];
-			pass.Begin();
+			var passes = currentEffect.Begin();
+			passes[0].Begin();
 
 			GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleFan,
 				vertices, 0, 2);
 
-			pass.End();
-			effect.End();
+			passes[0].End();
+			currentEffect.End();
 
 			if (showUi == true)
 			{
 				DrawUI();
 			}
+		}
+
+		void LoadEffects(int width, int height)
+		{
+			effects = new ColorEffect[]
+				{
+					content.Load<Effect>("Shaders/ColorBrightness"),
+					new ColorClippingEffect(content.Load<Effect>("Shaders/ColorClipping")),
+					new ColorStretchingEffect(content.Load<Effect>("Shaders/ColorStretching")),
+					content.Load<Effect>("Shaders/Protanopia"),
+					content.Load<Effect>("Shaders/Deutanopia"),
+					content.Load<Effect>("Shaders/Tritanopia"),
+					content.Load<Effect>("Shaders/TypicalAchromatopsia"),
+					content.Load<Effect>("Shaders/Protanomaly"),
+					content.Load<Effect>("Shaders/Deutanomaly"),
+					content.Load<Effect>("Shaders/Tritanomaly"),
+					content.Load<Effect>("Shaders/AtypicalAchromatopsia"),
+				};
+
+			var viewportSize = new Vector2(width, height);
+			foreach (var effect in effects)
+			{
+				effect.ViewportSize = viewportSize;
+			}
+
+			var colorClipping = effects[(int)ColorView.ColorClipping] as ColorClippingEffect;
+			// FIXME: Find the real values, e.g. the RGB range for YUV
+			float black = 16.0f / 255.0f;
+			float white = 253.0f / 255.0f;
+			colorClipping.MinColor = new Vector4(black, black, black, 1.0f);
+			colorClipping.MaxColor = new Vector4(white, white, white, 1.0f);
+			colorClipping.BlackPoint = black;
+			colorClipping.WhitePoint = white;
+
+			var colorStretching = effects[(int)ColorView.ColorStretching] as ColorStretchingEffect;
+			colorStretching.MinColor = new Vector4(black, black, black, 1.0f);
+			colorStretching.MaxColor = new Vector4(white, white, white, 1.0f);
+		}
+
+		void CreateVertices(int width, int height)
+		{
+			vertices = new VertexPositionTexture[4]
+			{
+				new VertexPositionTexture(
+					new Vector3(width, height, 0.0f),
+					new Vector2(1.0f, 1.0f)),
+				new VertexPositionTexture(
+					new Vector3(0.0f, height, 0.0f),
+					new Vector2(0.0f, 1.0f)),
+				new VertexPositionTexture(
+					new Vector3(0.0f, 0.0f, 0.0f),
+					new Vector2(0.0f, 0.0f)),
+				new VertexPositionTexture(
+					new Vector3(width, 0.0f, 0.0f),
+					new Vector2(1.0f, 0.0f)),
+			};
+
+			vertexDeclaration = new VertexDeclaration(GraphicsDevice, VertexPositionTexture.VertexElements);
+			vertexBuffer = new VertexBuffer(GraphicsDevice, typeof(VertexPositionTexture), 4, BufferUsage.WriteOnly);
+		}
+
+		void CreateTexture()
+		{
+			blankTexture = new Texture2D(GraphicsDevice, 1, 1, 1, TextureUsage.None, SurfaceFormat.Color);
+			var colors = new Color[]
+				{
+					Color.White
+				};
+			blankTexture.SetData<Color>(colors);
 		}
 
 		void DrawUI()
@@ -252,7 +295,7 @@ namespace Bnoerj.ColorAnalyzer
 
 			currentViewText = string.Format("View: {0}", currentView);
 
-			effect.CurrentTechnique = effect.Techniques[newViewIndex];
+			currentEffect = effects[newViewIndex];
 		}
 
 		bool IsNewKeyPress(KeyboardState keyboardState, Keys key)

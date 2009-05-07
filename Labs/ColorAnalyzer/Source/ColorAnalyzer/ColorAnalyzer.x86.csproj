@@ -82,6 +82,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColorAnalyzerComponent.cs" />
+    <Compile Include="ColorClippingEffect.cs" />
+    <Compile Include="ColorEffect.cs" />
+    <Compile Include="ColorStretchingEffect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

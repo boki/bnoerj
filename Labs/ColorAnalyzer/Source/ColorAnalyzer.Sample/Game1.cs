@@ -148,13 +148,31 @@ namespace Bnoerj.ColorAnalyzer
 				Y = viewport.Y
 			};
 
-			spriteBatch.Begin();
+			spriteBatch.Begin(SpriteBlendMode.AlphaBlend);
 
 			DrawText("High Contrast", ref position, Color.Yellow, Color.Black);
 
 			DrawText("Low Contrast", ref position,
-				new Color(0x33, 0xFF, 0x33),
-				new Color(0x33, 0x33, 0x33));
+				new Color(0xFF, 0x00, 0x00),
+				new Color(0x00, 0x00, 0xFF));
+
+			DrawText("Low Contrast", ref position,
+				new Color(0xFF, 0xFF, 0xFF),
+				new Color(0xCC, 0xCC, 0xCC));
+
+			DrawText("Color Blind: Protanopia", ref position,
+				new Color(0x00, 0xFF, 0x80),
+				new Color(0xFF, 0x80, 0x00));
+			DrawText("Color Blind: Deuteranopia", ref position,
+				new Color(0xFF, 0x80, 0x00),
+				new Color(0xFF, 0xFF, 0x00));
+			DrawText("Color Blind: Tritanopia", ref position,
+				new Color(0x80, 0xFF, 0x80),
+				new Color(0x80, 0x80, 0xFF));
+
+			DrawText("NTSC Clipped", ref position,
+				new Color(0xFF, 0xFF, 0xFF),
+				new Color(0x00, 0x00, 0x00));
 
 			DrawText("Press Start", ref position, Color.Yellow, Color.Black);
 
