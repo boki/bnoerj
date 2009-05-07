@@ -1,6 +1,6 @@
 ﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
-    <ProjectGuid>{44ed7e1d-51bb-4b3a-93cf-be9dbfa29da8}</ProjectGuid>
+    <ProjectGuid>{44ED7E1D-51BB-4B3A-93CF-BE9DBFA29DA8}</ProjectGuid>
     <ProjectTypeGuids>{2DF5C3F4-5A5F-47a9-8E94-23B4456F55E2};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">Xbox 360</Platform>
@@ -55,6 +55,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ColorAnalyzerComponent.cs" />
+    <Compile Include="ColorClippingEffect.cs" />
+    <Compile Include="ColorEffect.cs" />
+    <Compile Include="ColorStretchingEffect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
